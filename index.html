@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exercices E31 – Préparer ses outils de vente</title>
+<style>
+/* ── RESET & BASE ─────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:        #f5f6fa;
+  --surface:   #ffffff;
+  --card:      #ffffff;
+  --border:    #e1e4ec;
+  --border-hi: #c4c9d8;
+  --text:      #1f2433;
+  --text-dim:  #636a80;
+  --accent:    #e0a800;
+  --green:     #1f8f47;
+  --red:       #d03f3f;
+  --blue:      #2f6fb3;
+  --purple:    #7a4fb8;
+  --font-head: 'Syne', sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --radius:    10px;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@300;400;500;600&display=swap');
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.7;
+  min-height: 100vh;
+}
+
+/* ── HEADER ──────────────────────────────────────────────── */
+.site-header {
+  background: linear-gradient(135deg, #ffffff 0%, #eef1f8 100%);
+  border-bottom: 1px solid var(--border);
+  padding: 48px 24px 36px;
+  text-align: center;
+}
+.site-header .kicker {
+  display: inline-block;
+  background: var(--accent);
+  color: #1f2433;
+  font-family: var(--font-head);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  padding: 3px 12px;
+  border-radius: 3px;
+  margin-bottom: 18px;
+}
+.site-header h1 {
+  font-family: var(--font-head);
+  font-size: clamp(22px, 5vw, 38px);
+  font-weight: 800;
+  color: #141a2a;
+  margin-bottom: 8px;
+  line-height: 1.15;
+}
+.site-header .sub {
+  color: var(--text-dim);
+  font-size: 14px;
+  font-weight: 300;
+  max-width: 560px;
+  margin: 0 auto 24px;
+}
+
+/* ── NAV ANCRES ──────────────────────────────────────────── */
+.nav-anchors {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.nav-anchors a {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 7px 16px;
+  text-decoration: none;
+  transition: border-color .15s, color .15s;
+}
+.nav-anchors a:hover { border-color: var(--accent); color: #9a6f00; }
+
+/* ── CONTENEUR PRINCIPAL ─────────────────────────────────── */
+main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px 80px;
+}
+
+/* ── TITRE DE BLOC ───────────────────────────────────────── */
+.bloc-titre {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 52px 0 6px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+}
+.bloc-titre:first-child { margin-top: 0; }
+.bloc-titre .icone {
+  font-size: 26px;
+  flex-shrink: 0;
+}
+.bloc-titre h2 {
+  font-family: var(--font-head);
+  font-size: 20px;
+  font-weight: 800;
+  color: #141a2a;
+}
+
+/* ── MÉMO FORMULE ────────────────────────────────────────── */
+.memo {
+  background: #eef8f1;
+  border: 1px solid #cfe8d6;
+  border-left: 4px solid var(--green);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  margin-bottom: 24px;
+  font-size: 13.5px;
+  line-height: 1.75;
+}
+.memo .memo-titre {
+  font-family: var(--font-head);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 8px;
+}
+.memo code {
+  display: block;
+  background: #e1f2e6;
+  border-radius: 5px;
+  padding: 8px 14px;
+  color: #145c33;
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  margin: 4px 0;
+}
+.memo .note {
+  color: var(--text-dim);
+  font-size: 12.5px;
+  margin-top: 6px;
+}
+
+/* ── CARTE EXERCICE ──────────────────────────────────────── */
+.exo-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 14px;
+  overflow: hidden;
+  transition: border-color .15s;
+  box-shadow: 0 1px 2px rgba(20,26,42,.04);
+}
+.exo-card:hover { border-color: var(--border-hi); }
+
+.exo-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+}
+.exo-header::-webkit-details-marker { display: none; }
+
+.exo-num {
+  font-family: var(--font-head);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-dim);
+  flex-shrink: 0;
+  min-width: 40px;
+}
+.badge {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 2px 9px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+.badge-1 { background: #e6f5ea; color: var(--green); border: 1px solid #bfe3c9; }
+.badge-2 { background: #fff6dc; color: #9a6f00; border: 1px solid #f0dc9a; }
+.badge-3 { background: #fdeaea; color: var(--red); border: 1px solid #f3c4c4; }
+.badge-exam { background: #f1eafa; color: var(--purple); border: 1px solid #d9c9f0; }
+
+.exo-titre-txt {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  flex: 1;
+}
+.chevron {
+  color: var(--text-dim);
+  font-size: 13px;
+  flex-shrink: 0;
+  transition: transform .2s;
+}
+details[open] .chevron { transform: rotate(180deg); }
+
+/* ── CORPS DE L'EXERCICE ─────────────────────────────────── */
+.exo-body {
+  padding: 0 18px 20px;
+  border-top: 1px solid var(--border);
+}
+
+.contexte {
+  background: #eef4fb;
+  border-left: 3px solid var(--blue);
+  border-radius: 0 6px 6px 0;
+  padding: 14px 18px;
+  margin: 16px 0;
+  font-size: 14px;
+  line-height: 1.75;
+}
+.contexte strong { color: #141a2a; }
+
+.tableau-donnees {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  margin: 12px 0;
+}
+.tableau-donnees th {
+  background: #f0f2f7;
+  color: var(--text-dim);
+  font-family: var(--font-head);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 8px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+.tableau-donnees td {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+}
+.tableau-donnees tr:last-child td { border-bottom: none; }
+.tableau-donnees td.num { font-weight: 600; color: #141a2a; }
+.tableau-donnees tr.total-row td {
+  background: #f0f2f7;
+  font-family: var(--font-head);
+  font-weight: 700;
+  color: #9a6f00;
+}
+
+.questions { margin: 18px 0 0; }
+.question {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+  align-items: flex-start;
+}
+.question .q-num {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  background: var(--accent);
+  color: #1f2433;
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 11px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+}
+.question p { font-size: 14px; margin: 0; }
+
+/* ── ORDRE DE GRANDEUR / INDICE ──────────────────────────── */
+.ordre-grandeur {
+  background: #fff8e2;
+  border: 1px solid #f0dc9a;
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-size: 12.5px;
+  color: #6e5300;
+  margin: 12px 0 0;
+}
+.ordre-grandeur::before { content: "💡 "; }
+
+/* ── BOUTON CORRECTION ───────────────────────────────────── */
+.btn-corrige {
+  background: none;
+  border: 1px solid var(--border-hi);
+  border-radius: 6px;
+  color: var(--text-dim);
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 8px 16px;
+  margin-top: 18px;
+  transition: all .15s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.btn-corrige:hover { border-color: var(--green); color: var(--green); }
+
+/* ── CORRECTION ──────────────────────────────────────────── */
+.correction {
+  display: none;
+  background: #f1faf3;
+  border: 1px solid #cfe8d6;
+  border-radius: 6px;
+  padding: 16px 18px;
+  margin-top: 14px;
+  font-size: 13.5px;
+  line-height: 1.8;
+}
+.correction.visible { display: block; }
+.correction .corr-etape {
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #dcefe2;
+}
+.correction .corr-etape:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+.correction .c-num {
+  display: inline-block;
+  background: var(--green);
+  color: #ffffff;
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 10px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 18px;
+  margin-right: 6px;
+}
+.correction code {
+  display: block;
+  background: #e1f2e6;
+  border-radius: 4px;
+  padding: 6px 12px;
+  color: #145c33;
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  margin: 5px 0;
+}
+.correction .res {
+  font-family: var(--font-head);
+  font-weight: 700;
+  color: #141a2a;
+}
+.correction .conclu {
+  margin-top: 8px;
+  font-size: 13px;
+  color: #3b6a4a;
+  font-style: italic;
+}
+.correction .tableau-corr {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12.5px;
+  margin: 8px 0;
+}
+.correction .tableau-corr th {
+  background: #e1f2e6;
+  color: #3b6a4a;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 6px 10px;
+  text-align: left;
+}
+.correction .tableau-corr td {
+  padding: 6px 10px;
+  border-bottom: 1px solid #dcefe2;
+  color: #2a4535;
+  vertical-align: top;
+}
+.correction .tableau-corr td.val {
+  font-weight: 700;
+  color: var(--green);
+}
+.correction .tableau-corr tr.t-total td {
+  background: #e1f2e6;
+  font-weight: 700;
+  color: #9a6f00;
+}
+
+/* ── SÉPARATEUR ──────────────────────────────────────────── */
+hr.section-sep {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 54px 0 0;
+}
+
+/* ── FOOTER ──────────────────────────────────────────────── */
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 28px 20px;
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 12px;
+}
+
+/* ── RESPONSIVE ──────────────────────────────────────────── */
+@media (max-width: 520px) {
+  .exo-titre-txt { font-size: 13px; }
+  .contexte { font-size: 13px; }
+  .tableau-donnees { font-size: 12px; }
+  .tableau-donnees, .correction .tableau-corr { display: block; overflow-x: auto; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══ HEADER ══════════════════════════════════════════════ -->
+<header class="site-header">
+  <div class="kicker">🛍️ Exercices E31 – Bac Pro MCV</div>
+  <h1>Préparer ses<br>outils de vente</h1>
+  <p class="sub">14 exercices progressifs – de la fiche produit à l'argumentaire de vente (bloc 1 « conseiller et vendre »)</p>
+  <nav class="nav-anchors">
+    <a href="#fiche">🗂 Fiche produit (5 ex.)</a>
+    <a href="#cap">🎯 Avantages &amp; méthode CAP (5 ex.)</a>
+    <a href="#complet">🏁 Situations complètes (4 ex.)</a>
+  </nav>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════════════
+     BLOC 1 – FICHE PRODUIT
+══════════════════════════════════════════════════════════ -->
+<div class="bloc-titre" id="fiche">
+  <span class="icone">🗂</span>
+  <h2>Bloc 1 – Identifier les rubriques d'une fiche produit</h2>
+</div>
+
+<div class="memo">
+  <div class="memo-titre">🗂 mémo</div>
+  <code>Caractéristiques techniques → liées au produit (fabricant, non modifiables)</code>
+  <code>Caractéristiques commerciales → liées au point de vente (prix, paiement, livraison, garantie…)</code>
+  <code>Caractéristiques psychologiques → liées au client (mobiles SONCASE + freins)</code>
+  <p class="note">SONCASE : <strong>S</strong>écurité, <strong>O</strong>rgueil, <strong>N</strong>ouveauté, <strong>C</strong>onfort, <strong>A</strong>rgent, <strong>S</strong>ympathie, <strong>E</strong>nvironnement. Le mobile <strong>environnement</strong> s'applique dès qu'une caractéristique est liée à l'écologie ou au développement durable : produit bio, seconde main, reconditionné, matière recyclée, label écologique, fabrication locale, réparabilité, faible consommation d'énergie. Une fiche produit comporte : identification, caractéristiques, avantages. Pas de colonne « preuves ».</p>
+</div>
+
+<!-- EX 1 -->
+<details class="exo-card">
+  <summary class="exo-header">
+    <span class="exo-num">Ex. 1</span>
+    <span class="badge badge-1">⬆ décollage</span>
+    <span class="exo-titre-txt">Classer les caractéristiques d'un robot pâtissier</span>
+    <span class="chevron">▼</span>
+  </summary>
+  <div class="exo-body">
+    <div class="contexte">
+      Vous êtes vendeur(se) au rayon petit électroménager d'un magasin <em>Cuisinéo</em>. Vous préparez la fiche produit du robot pâtissier <strong>Kenmix Chef 5</strong>. Vous avez relevé les informations suivantes :<br><br>
+      • puissance : <strong>1 000 W</strong><br>
+      • prix : <strong>299 €</strong><br>
+      • bol en inox de <strong>4,6 L</strong><br>
+      • garantie : <strong>2 ans</strong><br>
+      • <strong>6 vitesses</strong> + fonction impulsion<br>
+      • paiement en <strong>3 fois sans frais</strong><br>
+      • livraison gratuite sous <strong>48 h</strong><br>
+      • poids : <strong>6,2 kg</strong><br>
+      • indice de réparabilité : <strong>8,5 / 10</strong> (pièces détachées disponibles 10 ans)<br>
+      • la cliente souhaite « gagner du temps pour préparer les gâteaux des enfants » et ajoute « je ne veux plus d'un appareil qu'on jette à la première panne », mais trouve « le prix un peu élevé ».
+    </div>
+    <div class="questions">
+      <div class="question"><span class="q-num">1</span><p>Classez chaque information dans la bonne rubrique : caractéristiques techniques, commerciales ou psychologiques.</p></div>
+      <div class="question"><span class="q-num">2</span><p>Identifiez les mobiles d'achat (SONCASE) et le frein de la cliente.</p></div>
+    </div>
+    <div class="ordre-grandeur"><strong>Indice :</strong> demandez-vous si l'information change d'un magasin à l'autre. Si oui, elle est commerciale.</div>
+    <button class="btn-corrige" onclick="toggleCorr(this)">✅ Voir la correction</button>
+    <div class="correction">
+      <div class="corr-etape">
+        <span class="c-num">1</span>
+        <table class="tableau-corr">
+          <thead><tr><th>Techniques</th><th>Commerciales</th><th>Psychologiques</th></tr></thead>
+          <tbody>
+            <tr><td>Puissance 1 000 W</td><td>Prix 299 €</td><td>Gagner du temps</td></tr>
+            <tr><td>Bol inox 4,6 L</td><td>Garantie 2 ans</td><td>Prix jugé élevé</td></tr>
+            <tr><td>6 vitesses + impulsion</td><td>Paiement en 3 fois sans frais</td><td></td></tr>
+            <tr><td>Poids 6,2 kg</td><td>Livraison gratuite sous 48 h</td><td>Ne plus jeter à la première panne</td></tr>
+            <tr><td>Indice de réparabilité 8,5 / 10</td><td></td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="corr-etape">
+        <span class="c-num">2</span>
+        <p class="res">Mobiles : <strong>confort</strong> (gain de temps, facilité) et <strong>environnement</strong> (appareil réparable, qui dure) – frein : <strong>le prix</strong>.</p>
+        <p class="conclu">L'indice de réparabilité est fourni par le fabricant : caractéristique technique. La garantie et la livraison sont fixées par le point de vente : ce sont des caractéristiques commerciales, même si elles concernent le produit.</p>
+      </div>
+    </div>
+  </div>
+</details>
+
+<!-- EX 2 -->
+<details class="exo-card">
+  <summary class="exo-header">
+    <span class="exo-num">Ex. 2</span>
+    <span class="badge badge-1">⬆ décollage</span>
+    <span class="exo-titre-txt">Vrai ou faux – les rubriques de la fiche produit</span>
+    <span class="chevron">▼</span>
+  </summary>
+  <div class="exo-body">
+    <div class="contexte">
+      Votre tuteur(trice) de PFMP vous demande de vérifier vos connaissances avant de rédiger les fiches produits du nouveau rayon. Indiquez si chaque affirmation est <strong>vraie</strong> ou <strong>fausse</strong> et justifiez.<br><br>
+      a. Le prix est une caractéristique technique.<br>
+      b. Le point de vente peut modifier les caractéristiques commerciales d'un produit.<br>
+      c. Les caractéristiques techniques sont indiquées par le fabricant dans la fiche technique.<br>
+      d. Les caractéristiques psychologiques sont liées au produit.<br>
+      e. La fiche produit comporte une colonne « preuves ».<br>
+      f. La matière et les dimensions sont des caractéristiques techniques.<br>
+      g. Un client qui choisit un jean de seconde main « pour limiter le gaspillage » a un mobile argent.
+    </div>
+    <div class="questions">
+      <div class="question"><span class="q-num">1</span><p>Répondez par vrai ou faux pour chaque affirmation, avec une courte justification.</p></div>
+    </div>
+    <div class="ordre-grandeur"><strong>Indice :</strong> quatre affirmations sont fausses.</div>
+    <button class="btn-corrige" onclick="toggleCorr(this)">✅ Voir la correction</button>
+    <div class="correction">
+      <div class="corr-etape">
+        <span class="c-num">1</span>
+        <table class="tableau-corr">
+          <thead><tr><th>Affirmation</th><th>Réponse</th><th>Justification</th></tr></thead>
+          <tbody>
+            <tr><td>a</td><td class="val">Faux</td><td>Le prix est fixé par le point de vente : caractéristique commerciale.</td></tr>
+            <tr><td>b</td><td class="val">Vrai</td><td>Prix, conditions de paiement, livraison dépendent de la politique commerciale.</td></tr>
+            <tr><td>c</td><td class="val">Vrai</td><td>Elles décrivent le produit et ne peuvent pas être modifiées par le magasin.</td></tr>
+            <tr><td>d</td><td class="val">Faux</td><td>Elles sont liées au client : mobiles d'achat et freins.</td></tr>
+            <tr><td>e</td><td class="val">Faux</td><td>La colonne « preuves » distingue l'argumentaire de vente de la fiche produit.</td></tr>
+            <tr><td>f</td><td class="val">Vrai</td><td>Elles décrivent physiquement le produit.</td></tr>
+            <tr><td>g</td><td class="val">Faux</td><td>Limiter le gaspillage relève du mobile environnement (le mobile argent s'appliquerait s'il cherchait d'abord un prix bas).</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</details>
+
+<!-- EX 3 -->
+<details class="exo-card">
+  <summary class="exo-header">
+    <span class="exo-num">Ex. 3</span>
+    <span class="badge badge-2">⬆⬆ intermédiaire</span>
+    <span class="exo-titre-txt">Repérer les mobiles SONCASE dans les paroles des clients</span>
+    <span class="chevron">▼</span>
+  </summary>
+  <div class="exo-body">
+    <div class="contexte">
+      Pendant une journée au rayon multimédia, vous avez noté les phrases de plusieurs clients :<br><br>
+      a. « Je veux être sûr qu'il ne tombera pas en panne au bout d'un an. »<br>
+      b. « Il me faut le tout dernier modèle, celui qui vient de sortir. »<br>
+      c. « Avec cette marque, mes collègues vont être jaloux. »<br>
+      d. « Il faut que ce soit simple à utiliser tous les jours. »<br>
+      e. « Je ne veux pas dépasser 200 €, c'est mon budget maximum. »<br>
+      f. « Vous m'avez bien conseillé la dernière fois, je reviens vers vous. »<br>
+      g. « Je préfère un smartphone reconditionné, c'est mieux pour la planète. »
+    </div>
+    <div class="questions">
+      <div class="question"><span class="q-num">1</span><p>Associez chaque phrase à un mobile d'achat SONCASE.</p></div>
+      <div class="question"><span class="q-num">2</span><p>Parmi ces phrases, laquelle peut aussi révéler un frein à l'achat ? Lequel ?</p></div>
+      <div class="question"><span class="q-num">3</span><p>Expliquez pourquoi il est utile de faire figurer les caractéristiques psychologiques dans une fiche produit.</p></div>
+    </div>
+    <div class="ordre-grandeur"><strong>Indice :</strong> chaque mobile de SONCASE est utilisé une fois (le S de sécurité et celui de sympathie comptent séparément).</div>
+    <button class="btn-corrige" onclick="toggleCorr(this)">✅ Voir la correction</button>
+    <div class="correction">
+      <div class="corr-etape">
+        <span class="c-num">1</span>
+        <table class="tableau-corr">
+          <thead><tr><th>Phrase</th><th>Mobile</th></tr></thead>
+          <tbody>
+            <tr><td>a – pas de panne</td><td class="val">Sécurité</td></tr>
+            <tr><td>b – dernier modèle</td><td class="val">Nouveauté</td></tr>
+            <tr><td>c – collègues jaloux</td><td class="val">Orgueil</td></tr>
+            <tr><td>d – simple à utiliser</td><td class="val">Confort</td></tr>
+            <tr><td>e – budget 200 €</td><td class="val">Argent</td></tr>
+            <tr><td>f – bon conseil</td><td class="val">Sympathie</td></tr>
+            <tr><td>g – reconditionné</td><td class="val">Environnement</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="corr-etape">
+        <span class="c-num">2</span>
+        <p class="res">Phrase e : le <strong>prix</strong> peut devenir un frein si le produit dépasse le budget annoncé.</p>
+      </div>
+      <div class="corr-etape">
+        <span class="c-num">3</span>
+        <p>Connaître à l'avance les mobiles et les freins probables permet au vendeur de choisir les arguments adaptés au client et de préparer la réponse aux objections.</p>
+      </div>
+    </div>
+  </div>
+</details>
+
+<!-- EX 4 -->
+<details class="exo-card">
+  <summary class="exo-header">
+    <span class="exo-num">Ex. 4</span>
+    <span class="badge badge-2">⬆⬆ intermédiaire</span>
+    <span class="exo-titre-txt">Réaliser une fiche service – offre box internet</span>
+    <span class="chevron">▼</span>
+  </summary>
+  <div class="exo-body">
+    <div class="contexte">
+      Vous travaillez dans une boutique de téléphonie. Vous devez réaliser la fiche service de l'offre <strong>Fibra Max</strong> à partir du descriptif du site internet de l'enseigne :
+    </div>
+    <table class="tableau-donnees">
+      <thead><tr><th>Élément</th><th>Information</th></tr></thead>
+      <tbody>
+        <tr><td>Débit internet</td><td class="num">jusqu'à 2 Gb/s en fibre</td></tr>
+        <tr><td>Télévision</td><td class="num">180 chaînes incluses</td></tr>
+        <tr><td>Appels</td><td class="num">illimités vers fixes et mobiles en France</td></tr>
+        <tr><td>Box</td><td class="num">Wi-Fi 7 + répéteur fourni</td></tr>
+        <tr><td>Prix</td><td class="num">34,99 € / mois</td></tr>
+        <tr><td>Paiement</td><td class="num">prélèvement mensuel</td></tr>
+        <tr><td>Installation</td><td class="num">par un technicien, offerte</td></tr>
+      </tbody>
+    </table>
+    <div class="questions">
+      <div class="question"><span class="q-num">1</span><p>Classez les éléments en caractéristiques techniques et commerciales.</p></div>
+      <div class="question"><span class="q-num">2</span><p>Rédigez l'avantage client correspondant à chaque caractéristique.</p></div>
+      <div class="question"><span class="q-num">3</span><p>Une famille de quatre personnes, dont deux parents en télétravail, s'intéresse à l'offre. Indiquez le mobile SONCASE principal et un frein possible.</p></div>
+    </div>
+    <div class="ordre-grandeur"><strong>Indice :</strong> un avantage répond à la question du client « qu'est-ce que ça m'apporte ? ».</div>
+    <button class="btn-corrige" onclick="toggleCorr(this)">✅ Voir la correction</button>
+    <div class="correction">
+      <div class="corr-etape">
+        <span class="c-num">1</span>
+        <span class="c-num">2</span>
+        <table class="tableau-corr">
+          <thead><tr><th>Caractéristique</th><th>Type</th><th>Avantage</th></tr></thead>
+          <tbody>
+            <tr><td>Débit 2 Gb/s</td><td>Technique</td><td>Toute la famille se connecte en même temps sans ralentissement (visio, streaming, jeux).</td></tr>
+            <tr><td>180 chaînes</td><td>Technique</td><td>Un large choix de programmes pour chaque membre du foyer.</td></tr>
+            <tr><td>Appels illimités</td><td>Technique</td><td>Appeler sans compter et sans surcoût.</td></tr>
+            <tr><td>Wi-Fi 7 + répéteur</td><td>Technique</td><td>Une connexion stable dans toutes les pièces.</td></tr>
+            <tr><td>34,99 € / mois</td><td>Commerciale</td><td>Un budget maîtrisé pour internet, TV et téléphone réunis.</td></tr>
+            <tr><td>Prélèvement mensuel</td><td>Commerciale</td><td>Aucune démarche de paiement, dépense répartie sur l'année.</td></tr>
+            <tr><td>Installation offerte</td><td>Commerciale</td><td>Pas de frais et pas de branchement à faire soi-même.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="corr-etape">
+        <span class="c-num">3</span>
+        <p class="res">Mobile : <strong>confort</strong> (connexion fiable pour le télétravail) – frein possible : <strong>le prix</strong> ou la crainte d'une coupure (<strong>sécurité</strong>).</p>
+        <p class="conclu">Une fiche service se construit comme une fiche produit : identification, caractéristiques techniques et commerciales, avantages, caractéristiques psychologiques.</p>
+      </div>
+    </div>
+  </div>
+</details>
+
+<!-- EX 5 -->
+<details class="exo-card">
+  <summary class="exo-header">
+    <span class="exo-num">Ex. 5</span>
+    <span class="badge badge-3">⬆⬆⬆ niveau examen</span>
+    <span class="exo-titre-txt">Corriger une fiche produit erronée</span>
+    <span class="chevron">▼</span>
+  </summary>
+  <div class="exo-body">
+    <div class="contexte">
+      Un stagiaire a rédigé la fiche produit de l'aspirateur balai <strong>Aéro S9</strong>. Votre responsable vous demande de la vérifier avant impression.
+    </div>
+    <table class="tableau-donnees">
+      <thead><tr><th>Rubrique</th><th>Caractéristique</th><th>Avantage</th><th>Preuve</th></tr></thead>
+      <tbody>
+        <tr><td>Techniques</td><td>Prix : 249 €</td><td>Prix abordable</td><td>Étiquette</td></tr>
+        <tr><td>Techniques</td><td>Autonomie : 45 min</td><td>L'aspirateur a une autonomie de 45 minutes</td><td>Notice</td></tr>
+        <tr><td>Techniques</td><td>Poids : 2,4 kg</td><td>Léger, facile à porter dans les escaliers</td><td>Faire soupeser</td></tr>
+        <tr><td>Commerciales</td><td>Puissance d'aspiration : 150 AW</td><td>Aspire même les poils d'animaux</td><td>Démonstration</td></tr>
+        <tr><td>Commerciales</td><td>Garantie : 2 ans</td><td>Réparation gratuite pendant 2 ans</td><td>CGV</td></tr>
+        <tr><td>Psychologiques</td><td colspan="3">Mobile : le prix – Frein : aucun</td></tr>
+      </tbody>
+    </table>
+    <div class="questions">
+      <div class="question"><span class="q-num">1</span><p>Repérez les erreurs de cette fiche produit (au moins quatre).</p></div>
+      <div class="question"><span class="q-num">2</span><p>Proposez la fiche produit corrigée.</p></div>
+    </div>
+    <div class="ordre-grandeur"><strong>Indice :</strong> vérifiez le classement des rubriques, la formulation des avantages, les colonnes du tableau et la partie psychologique.</div>
+    <button class="btn-corrige" onclick="toggleCorr(this)">✅ Voir la correction</button>
+    <div class="correction">
+      <div class="corr-etape">
+        <span class="c-num">1</span>
+        <p>• Le <strong>prix</strong> est une caractéristique commerciale, pas technique.<br>
+        • La <strong>puissance d'aspiration</strong> est une caractéristique technique, pas commerciale.<br>
+        • L'avantage de l'autonomie <strong>répète la caractéristique</strong> : il ne dit pas ce que le client y gagne.<br>
+        • La colonne <strong>« preuves »</strong> n'a pas sa place dans une fiche produit (elle relève de l'argumentaire).<br>
+        • Le prix n'est <strong>pas un mobile SONCASE</strong> : c'est un frein ; le mobile correspondant serait « argent » si le prix est un point fort.</p>
+      </div>
+      <div class="corr-etape">
+        <span class="c-num">2</span>
+        <table class="tableau-corr">
+          <thead><tr><th>Caractéristiques</th><th>Avantages</th></tr></thead>
+          <tbody>
+            <tr><td colspan="2"><strong>Techniques</strong></td></tr>
+            <tr><td>Autonomie : 45 min</td><td>Nettoyer tout le logement en une seule charge.</td></tr>
+            <tr><td>Poids : 2,4 kg</td><td>Léger, facile à porter dans les escaliers.</td></tr>
+            <tr><td>Puissance d'aspiration : 150 AW</td><td>Aspire même les poils d'animaux.</td></tr>
+            <tr><td colspan="2"><strong>Commerciales</strong></td></tr>
+            <tr><td>Prix : 249 €</td><td>Prix en rapport avec les performances.</td></tr>
+            <tr><td>Garantie : 2 ans</td><td>Réparation ou échange gratuit pendant 2 ans.</td></tr>
+            <tr><td colspan="2"><strong>Psychologiques</strong> – mobiles : confort, sécurité – frein : le prix</td></tr>
+          </tbody>
+        </table>
+        <p class="conclu">Une fiche produit sert à connaître le produit ; l'argumentaire sert à convaincre le client. Il ne faut pas confondre les deux outils.</p>
+      </div>
+    </div>
+  </div>
+</details>
+
+<hr class="section-sep">
+
+<!-- ══════════════════════════════════════════════════════════
+     BLOC 2 – AVANTAGES & MÉTHODE CAP
+══════════════════════════════════════════════════════════ -->
+<div class="bloc-titre" id="cap">
+  <span class="icone">🎯</span>
+  <h2>Bloc 2 – Traduire en avantages et construire des arguments CAP</h2>
+</div>
+
+<div class="memo">
+  <div class="memo-titre">🗂 mémo méthode CAP</div>
+  <code>Argument = Caractéristique + Avantage + Preuve</code>
+  <p class="note">L'<strong>avantage</strong> traduit la caractéristique en bénéfice pour le client (ex. : coton → agréable à porter). La <strong>preuve</strong> démontre ce qu'on affirme : démonstration, essai, faire toucher ou soupeser, notice du fabricant, CGV, norme ou label, témoignage, avis clients.</p>
+</div>
+
+<!-- EX 6 -->
+<details class="exo-card">
+  <summary class="exo-header">
+    <span class="exo-num">Ex. 6</span>
+    <span class="badge badge-1">⬆ décollage</span>
+    <span class="exo-titre-txt">Transformer des caractéristiques en avantages</span>
+    <span class="chevron">▼</span>
+  </summary>
+  <div class="exo-body">
+    <div class="contexte">
+      Dans un magasin de sport et de loisirs, vous relevez les caractéristiques suivantes :<br><br>
+      a. chaussures de running avec <strong>semelle amortissante</strong><br>
+      b. veste avec <strong>membrane imperméable et respirante</strong><br>
+      c. smartphone avec <strong>batterie de 5 000 mAh</strong><br>
+      d. poêle avec <strong>revêtement antiadhésif</strong><br>
+      e. <strong>livraison gratuite en 24 h</strong><br>
+      f. t-shirt de sport en <strong>polyester 100 % recyclé</strong> (issu de bouteilles plastiques)
+    </div>
+    <div class="questions">
+      <div class="question"><span class="q-num">1</span><p>Rédigez un avantage client pour chaque caractéristique, en commençant par « vous… » ou « cela vous permet de… ».</p></div>
+      <div class="question"><span class="q-num">2</span><p>Précisez pour chacune s'il s'agit d'une caractéristique technique ou commerciale.</p></div>
+      <div class="question"><span class="q-num">3</span><p>Quel mobile SONCASE la caractéristique f permet-elle de toucher ?</p></div>
+    </div>
+    <div class="ordre-grandeur"><strong>Indice :</strong> un avantage ne décrit pas le produit, il parle du client.</div>
+    <button class="btn-corrige" onclick="toggleCorr(this)">✅ Voir la correction</button>
+    <div class="correction">
+      <div class="corr-etape">
+        <span class="c-num">1</span>
+        <span class="c-num">2</span>
+        <table class="tableau-corr">
+          <thead><tr><th>Caractéristique</th><th>Type</th><th>Avantage (exemple)</th></tr></thead>
+          <tbody>
+            <tr><td>a – semelle amortissante</td><td>Technique</td><td>Vous protégez vos articulations et courez plus longtemps sans douleur.</td></tr>
+            <tr><td>b – membrane imperméable</td><td>Technique</td><td>Vous restez au sec sous la pluie sans transpirer.</td></tr>
+            <tr><td>c – batterie 5 000 mAh</td><td>Technique</td><td>Vous tenez toute la journée sans recharger.</td></tr>
+            <tr><td>d – revêtement antiadhésif</td><td>Technique</td><td>Vous cuisinez avec peu de matière grasse et nettoyez facilement.</td></tr>
+            <tr><td>e – livraison 24 h gratuite</td><td>Commerciale</td><td>Vous recevez votre achat dès demain sans frais supplémentaires.</td></tr>
+            <tr><td>f – polyester recyclé</td><td>Technique</td><td>Vous faites du sport dans un vêtement qui donne une seconde vie au plastique.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="corr-etape">
+        <span class="c-num">3</span>
+        <p class="res">Mobile : <strong>environnement</strong> (matière recyclée, réduction des déchets).</p>
+      </div>
+    </div>
+  </div>
+</details>
+
+<!-- EX 7 -->
+<details class="exo-card">
+  <summary class="exo-header">
+    <span class="exo-num">Ex. 7</span>
+    <span class="badge badge-1">⬆ décollage</span>
+    <span class="exo-titre-txt">Associer une preuve à chaque argument</span>
+    <span class="chevron">▼</span>
+  </summary>
+  <div class="exo-body">
+    <div class="contexte">
+      Associez à chaque argument la preuve la plus adaptée.
+    </div>
+    <table class="tableau-donnees">
+      <thead><tr><th>Argument</th><th>Preuves possibles</th></tr></thead>
+      <tbody>
+        <tr><td>1. Cette montre est étanche jusqu'à 50 m.</td><td>A. Faire soupeser le produit</td></tr>
+        <tr><td>2. Ce sac à dos ne pèse que 600 g.</td><td>B. Montrer les conditions générales de vente</td></tr>
+        <tr><td>3. Vous bénéficiez d'une garantie de 3 ans.</td><td>C. Faire écouter le produit au client</td></tr>
+        <tr><td>4. Ce casque offre un son très précis.</td><td>D. Montrer la norme indiquée sur la notice</td></tr>
+        <tr><td>5. Ce pull en laine mérinos est très doux.</td><td>E. Montrer les avis clients notés sur le site</td></tr>
+        <tr><td>6. Nos clients sont très satisfaits de ce modèle.</td><td>F. Faire toucher la matière</td></tr>
+        <tr><td>7. Ce body pour bébé est en coton biologique.</td><td>G. Montrer le label écologique sur l'étiquette</td></tr>
+      </tbody>
+    </table>
+    <div class="questions">
+      <div class="question"><span class="q-num">1</span><p>Associez chaque argument (1 à 7) à une preuve (A à G).</p></div>
+      <div class="question"><span class="q-num">2</span><p>Pourquoi une preuve est-elle plus efficace qu'une simple affirmation du vendeur ?</p></div>
+      <div class="question"><span class="q-num">3</span><p>Quel mobile SONCASE l'argument 7 vise-t-il ?</p></div>
+    </div>
+    <div class="ordre-grandeur"><strong>Indice :</strong> privilégiez les preuves qui font participer le client (ses cinq sens).</div>
+    <button class="btn-corrige" onclick="toggleCorr(this)">✅ Voir la correction</button>
+    <div class="correction">
+      <div class="corr-etape">
+        <span class="c-num">1</span>
+        <code>1 → D   2 → A   3 → B   4 → C   5 → F   6 → E   7 → G</code>
+      </div>
+      <div class="corr-etape">
+        <span class="c-num">2</span>
+        <p>Le client constate par lui-même ou s'appuie sur une source extérieure au vendeur : l'argument devient crédible, le climat de confiance s'installe.</p>
+      </div>
+      <div class="corr-etape">
+        <span class="c-num">3</span>
+        <p class="res">Mobile : <strong>environnement</strong> (produit bio) – il peut s'ajouter à la <strong>sécurité</strong> (pas de pesticides au contact de la peau du bébé).</p>
+        <p class="conclu">Pour un argument écologique, le label officiel est la preuve attendue : une simple affirmation « c'est écolo » ne suffit pas.</p>
+      </div>
+    </div>
+  </div>
+</details>
+
+<!-- EX 8 -->
+<details class="exo-card">
+  <summary class="exo-header">
+    <span class="exo-num">Ex. 8</span>
+    <span class="badge badge-2">⬆⬆ intermédiaire</span>
+    <span class="exo-titre-txt">Caractéristique, avantage ou preuve ?</span>
+    <span class="chevron">▼</span>
+  </summary>
+  <div class="exo-body">
+    <div class="contexte">
+      Voici des phrases prononcées par un vendeur lors de la présentation d'un casque audio :<br><br>
+      a. « Ce casque pèse 180 g. »<br>
+      b. « Vous pourrez le porter toute une soirée sans aucune gêne. »<br>
+      c. « Tenez, prenez-le en main. »<br>
+      d. « Il est équipé de la réduction de bruit active. »<br>
+      e. « Vous serez au calme dans le train ou dans le bus. »<br>
+      f. « Regardez, il est noté 4,7 / 5 par plus de 1 200 clients. »<br>
+      g. « Activez la réduction de bruit et écoutez la différence. »
+    </div>
+    <div class="questions">
+      <div class="question"><span class="q-num">1</span><p>Indiquez pour chaque phrase s'il s'agit d'une caractéristique, d'un avantage ou d'une preuve.</p></div>
+      <div class="question"><span class="q-num">2</span><p>Reconstituez deux arguments complets selon la méthode CAP.</p></div>
+    </div>
+    <div class="ordre-grandeur"><strong>Indice :</strong> on peut proposer deux preuves différentes pour une même caractéristique.</div>
+    <button class="btn-corrige" onclick="toggleCorr(this)">✅ Voir la correction</button>
+    <div class="correction">
+      <div class="corr-etape">
+        <span class="c-num">1</span>
+        <code>Caractéristiques : a, d   Avantages : b, e   Preuves : c, f, g</code>
+      </div>
+      <div class="corr-etape">
+        <span class="c-num">2</span>
+        <table class="tableau-corr">
+          <thead><tr><th>Caractéristique</th><th>Avantage</th><th>Preuve</th></tr></thead>
+          <tbody>
+            <tr><td>Poids 180 g (a)</td><td>Porté toute une soirée sans gêne (b)</td><td>Prendre en main (c)</td></tr>
+            <tr><td>Réduction de bruit active (d)</td><td>Au calme dans les transports (e)</td><td>Essai (g) ou avis clients (f)</td></tr>
+          </tbody>
+        </table>
+        <p class="conclu">Les avis clients (f) peuvent prouver l'ensemble des arguments : c'est une preuve par le témoignage.</p>
+      </div>
+    </div>
+  </div>
+</details>
+
+<!-- EX 9 -->
+<details class="exo-card">
+  <summary class="exo-header">
+    <span class="exo-num">Ex. 9</span>
+    <span class="badge badge-2">⬆⬆ intermédiaire</span>
+    <span class="exo-titre-txt">Réaliser l'argumentaire de vente d'un casque audio</span>
+    <span class="chevron">▼</span>
+  </summary>
+  <div class="exo-body">
+    <div class="contexte">
+      Vous êtes conseiller(ère) de vente dans une enseigne de produits culturels et high-tech. Le casque <strong>Sonora Q40</strong> vient d'être référencé. Votre responsable vous transmet sa fiche technique et vous demande d'en réaliser l'argumentaire.
+    </div>
+    <table class="tableau-donnees">
+      <thead><tr><th>Caractéristique</th><th>Information</th></tr></thead>
+      <tbody>
+        <tr><td>Poids</td><td class="num">250 g</td></tr>
+        <tr><td>Autonomie</td><td class="num">40 h</td></tr>
+        <tr><td>Recharge rapide</td><td class="num">10 min = 5 h d'écoute</td></tr>
+        <tr><td>Réduction de bruit</td><td class="num">active, 3 modes</td></tr>
+        <tr><td>Format</td><td class="num">pliable, étui de transport fourni</td></tr>
+        <tr><td>Prix</td><td class="num">149 €</td></tr>
+        <tr><td>Garantie</td><td class="num">2 ans</td></tr>
+      </tbody>
+    </table>
+    <div class="questions">
+      <div class="question"><span class="q-num">1</span><p>Réalisez l'argumentaire de vente du casque sous forme de tableau (caractéristiques, avantages, preuves).</p></div>
+      <div class="question"><span class="q-num">2</span><p>Complétez la partie caractéristiques psychologiques : mobiles SONCASE et frein principal.</p></div>
+    </div>
+    <div class="ordre-grandeur"><strong>Indice :</strong> sept caractéristiques donnent sept arguments ; séparez bien les caractéristiques techniques et commerciales.</div>
+    <button class="btn-corrige" onclick="toggleCorr(this)">✅ Voir la correction</button>
+    <div class="correction">
+      <div class="corr-etape">
+        <span class="c-num">1</span>
+        <table class="tableau-corr">
+          <thead><tr><th>Caractéristiques</th><th>Avantages</th><th>Preuves</th></tr></thead>
+          <tbody>
+            <tr><td colspan="3"><strong>Techniques</strong></td></tr>
+            <tr><td>Poids : 250 g</td><td>Léger, confortable sur de longues durées.</td><td>Faire essayer le casque.</td></tr>
+            <tr><td>Autonomie : 40 h</td><td>Une semaine d'écoute sans recharger.</td><td>Montrer la notice du fabricant.</td></tr>
+            <tr><td>Recharge rapide</td><td>5 h d'écoute après 10 min de charge, idéal avant un départ.</td><td>Notice du fabricant.</td></tr>
+            <tr><td>Réduction de bruit active</td><td>Écouter au calme dans les transports ou au travail.</td><td>Démonstration en rayon.</td></tr>
+            <tr><td>Pliable + étui</td><td>Se range facilement dans un sac, protégé des chocs.</td><td>Plier le casque devant le client.</td></tr>
+            <tr><td colspan="3"><strong>Commerciales</strong></td></tr>
+            <tr><td>Prix : 149 €</td><td>Prix en rapport avec les fonctionnalités.</td><td>Comparer avec les modèles concurrents, avis clients.</td></tr>
+            <tr><td>Garantie : 2 ans</td><td>Réparation ou échange gratuit pendant 2 ans.</td><td>Montrer les CGV.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="corr-etape">
+        <span class="c-num">2</span>
+        <p class="res">Mobiles : <strong>confort, nouveauté, sécurité</strong> – frein : <strong>le prix</strong>.</p>
+        <p class="conclu">Toutes les caractéristiques n'ont pas à être présentées au client : le vendeur choisit les arguments adaptés à ses besoins.</p>
+      </div>
+    </div>
+  </div>
+</details>
+
+<!-- EX 10 -->
+<details class="exo-card">
+  <summary class="exo-header">
+    <span class="exo-num">Ex. 10</span>
+    <span class="badge badge-3">⬆⬆⬆ niveau examen</span>
+    <span class="exo-titre-txt">Adapter l'argument au mobile du client</span>
+    <span class="chevron">▼</span>
+  </summary>
+  <div class="exo-body">
+    <div class="contexte">
+      À partir de l'argumentaire du casque <strong>Sonora Q40</strong> (ex. 9), vous recevez trois clients :<br><br>
+      • <strong>Léa</strong>, étudiante : « J'ai un petit budget, je veux un produit qui dure. »<br>
+      • <strong>Marc</strong>, commercial : « Je prends le train trois fois par semaine, je veux être tranquille. »<br>
+      • <strong>Julien</strong>, passionné de high-tech : « Je cherche ce qui se fait de mieux en ce moment. »
+    </div>
+    <div class="questions">
+      <div class="question"><span class="q-num">1</span><p>Identifiez le mobile SONCASE principal de chaque client.</p></div>
+      <div class="question"><span class="q-num">2</span><p>Sélectionnez les deux arguments les plus pertinents pour chacun.</p></div>
+      <div class="question"><span class="q-num">3</span><p>Rédigez, pour Marc, l'argument que vous prononcerez à l'oral (caractéristique, avantage et preuve en une seule intervention).</p></div>
+    </div>
+    <div class="ordre-grandeur"><strong>Indice :</strong> le même produit se vend avec des arguments différents selon le client.</div>
+    <button class="btn-corrige" onclick="toggleCorr(this)">✅ Voir la correction</button>
+    <div class="correction">
+      <div class="corr-etape">
+        <span class="c-num">1</span>
+        <span class="c-num">2</span>
+        <table class="tableau-corr">
+          <thead><tr><th>Client</th><th>Mobile</th><th>Arguments prioritaires</th></tr></thead>
+          <tbody>
+            <tr><td>Léa</td><td class="val">Argent, sécurité</td><td>Prix 149 € en rapport avec les fonctions ; garantie 2 ans.</td></tr>
+            <tr><td>Marc</td><td class="val">Confort</td><td>Réduction de bruit active ; autonomie 40 h (ou format pliable).</td></tr>
+            <tr><td>Julien</td><td class="val">Nouveauté</td><td>Réduction de bruit 3 modes ; recharge rapide.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="corr-etape">
+        <span class="c-num">3</span>
+        <p><em>« Ce casque est équipé d'une réduction de bruit active : dans le train, vous n'entendrez plus les conversations ni le bruit des rails, vous pourrez travailler ou vous reposer au calme. Tenez, mettez-le et activez la réduction de bruit, vous allez entendre la différence. »</em></p>
+        <p class="conclu">À l'oral, on n'énonce pas « caractéristique, avantage, preuve » : on enchaîne naturellement les trois éléments en s'adressant au client (« vous »).</p>
+      </div>
+    </div>
+  </div>
+</details>
+
+<hr class="section-sep">
+
+<!-- ══════════════════════════════════════════════════════════
+     BLOC 3 – SITUATIONS COMPLÈTES
+══════════════════════════════════════════════════════════ -->
+<div class="bloc-titre" id="complet">
+  <span class="icone">🏁</span>
+  <h2>Bloc 3 – Situations professionnelles complètes</h2>
+</div>
+
+<div class="memo">
+  <div class="memo-titre">🗂 mémo outils de vente</div>
+  <code>Fiche produit / service = identification + caractéristiques + avantages</code>
+  <code>Argumentaire = fiche produit + preuves</code>
+  <code>Fiche produit e-commerce = visuels + infos clés + éléments qui rassurent + éléments qui font vendre</code>
+  <p class="note">Les clients sont de mieux en mieux informés avant de venir en magasin : le vendeur doit connaître le produit et la concurrence au moins aussi bien qu'eux (veille commerciale).</p>
+</div>
+
+<!-- EX 11 -->
+<details class="exo-card">
+  <summary class="exo-header">
+    <span class="exo-num">Ex. 11</span>
+    <span class="badge badge-2">⬆⬆ intermédiaire</span>
+    <span class="exo-titre-txt">Améliorer une fiche produit e-commerce</span>
+    <span class="chevron">▼</span>
+  </summary>
+  <div class="exo-body">
+    <div class="contexte">
+      L'enseigne <em>Urban Ride</em> vend des trottinettes électriques en magasin et sur son site marchand. La fiche en ligne de la <strong>Volta X2</strong> comporte uniquement :<br><br>
+      • une photo de face, sans zoom ;<br>
+      • le nom du produit et le prix (<strong>479 €</strong>) en petits caractères ;<br>
+      • un bouton « ajouter au panier » ;<br>
+      • un descriptif de trois lignes : « Trottinette 350 W, autonomie 40 km, pneus 10 pouces ».<br><br>
+      Le taux de transformation de cette page est le plus faible du site.
+    </div>
+    <div class="questions">
+      <div class="question"><span class="q-num">1</span><p>Listez les éléments manquants pour rendre la fiche attractive, rassurer le client et favoriser l'achat.</p></div>
+      <div class="question"><span class="q-num">2</span><p>Proposez trois produits complémentaires à afficher sur la fiche.</p></div>
+      <div class="question"><span class="q-num">3</span><p>Transformez le descriptif technique en trois points forts orientés client.</p></div>
+      <div class="question"><span class="q-num">4</span><p>L'enseigne propose aussi la Volta X2 en version <strong>reconditionnée</strong> à 349 €, garantie 1 an. Rédigez le point fort à afficher sur sa fiche et indiquez les mobiles SONCASE visés.</p></div>
+    </div>
+    <div class="ordre-grandeur"><strong>Indice :</strong> pensez visuel, informations clés, réassurance (avis, garantie, livraison) et ventes additionnelles.</div>
+    <button class="btn-corrige" onclick="toggleCorr(this)">✅ Voir la correction</button>
+    <div class="correction">
+      <div class="corr-etape">
+        <span class="c-num">1</span>
+        <p>• <strong>Visuel</strong> : plusieurs photos sous différents angles avec zoom, vidéo de démonstration ; nom, marque et prix en gros caractères.<br>
+        • <strong>Informations clés</strong> : points forts, lien vers les caractéristiques complètes, disponibilité, modes de livraison et de retrait en magasin.<br>
+        • <strong>Réassurance</strong> : avis clients avec notes et commentaires, garantie, paiement sécurisé ou en plusieurs fois.<br>
+        • <strong>Ventes</strong> : rubriques « produits complémentaires » et « nos clients ont aussi consulté ».</p>
+      </div>
+      <div class="corr-etape">
+        <span class="c-num">2</span>
+        <p class="res">Casque, antivol, gants ou sacoche de guidon (ou gilet réfléchissant, assurance).</p>
+      </div>
+      <div class="corr-etape">
+        <span class="c-num">3</span>
+        <p>• Moteur 350 W : grimpe les côtes sans effort.<br>
+        • Autonomie 40 km : plusieurs jours de trajets domicile-travail sans recharger.<br>
+        • Pneus 10 pouces : stabilité et confort sur les pavés.</p>
+      </div>
+      <div class="corr-etape">
+        <span class="c-num">4</span>
+        <p><em>« Reconditionnée et contrôlée par nos techniciens : les mêmes performances pour 130 € de moins, en donnant une seconde vie à une trottinette. Garantie 1 an. »</em></p>
+        <code>479 − 349 = 130 € d'économie</code>
+        <p class="res">Mobiles : <strong>environnement</strong> (seconde main, moins de déchets) et <strong>argent</strong> (130 € d'économie) ; la garantie rassure (<strong>sécurité</strong>).</p>
+        <p class="conclu">Dans un cadre omnicanal, la fiche e-commerce joue le rôle du vendeur : elle doit argumenter et rassurer sans lui.</p>
+      </div>
+    </div>
+  </div>
+</details>
+
+<!-- EX 12 -->
+<details class="exo-card">
+  <summary class="exo-header">
+    <span class="exo-num">Ex. 12</span>
+    <span class="badge badge-exam">🏁 sujet complet</span>
+    <span class="exo-titre-txt">Fiche produit et argumentaire face à la concurrence</span>
+    <span class="chevron">▼</span>
+  </summary>
+  <div class="exo-body">
+    <div class="contexte">
+      Vous effectuez votre PFMP chez <em>Électro Plus</em>. Le magasin met en avant l'aspirateur robot <strong>Robonet R5</strong>. Votre tuteur vous fournit un relevé de veille concurrentielle.
+    </div>
+    <table class="tableau-donnees">
+      <thead><tr><th>Critère</th><th>Robonet R5</th><th>Cleanbot 300</th><th>Aspiro Max</th></tr></thead>
+      <tbody>
+        <tr><td>Prix</td><td class="num">349 €</td><td>379 €</td><td>329 €</td></tr>
+        <tr><td>Autonomie</td><td class="num">150 min</td><td>90 min</td><td>110 min</td></tr>
+        <tr><td>Cartographie laser</td><td class="num">oui</td><td>oui</td><td>non</td></tr>
+        <tr><td>Fonction lavage</td><td class="num">oui</td><td>non</td><td>oui</td></tr>
+        <tr><td>Niveau sonore</td><td class="num">58 dB</td><td>65 dB</td><td>62 dB</td></tr>
+        <tr><td>Garantie</td><td class="num">3 ans</td><td>2 ans</td><td>2 ans</td></tr>
+        <tr><td>Livraison</td><td class="num">gratuite sous 48 h</td><td>9,90 €</td><td>gratuite sous 5 jours</td></tr>
+      </tbody>
+    </table>
+    <div class="contexte">
+      Mme Durand entre dans le magasin : « J'ai deux chats et 90 m² à entretenir, je travaille toute la journée. Je ne veux pas que ça fasse un bruit d'enfer quand je suis là le soir. Mais 349 €, c'est quand même cher… »
+    </div>
+    <div class="questions">
+      <div class="question"><span class="q-num">1</span><p>Réalisez la fiche produit du Robonet R5 en intégrant dans les avantages la comparaison avec les concurrents.</p></div>
+      <div class="question"><span class="q-num">2</span><p>Identifiez les mobiles et le frein de Mme Durand.</p></div>
+      <div class="question"><span class="q-num">3</span><p>Sélectionnez trois arguments adaptés à Mme Durand et ajoutez une preuve à chacun.</p></div>
+      <div class="question"><span class="q-num">4</span><p>Rédigez votre réponse orale à l'objection sur le prix.</p></div>
+    </div>
+    <div class="ordre-grandeur"><strong>Indice :</strong> le Robonet n'est pas le moins cher ; cherchez ce qu'il apporte de plus que l'Aspiro Max pour 20 €.</div>
+    <button class="btn-corrige" onclick="toggleCorr(this)">✅ Voir la correction complète</button>
+    <div class="correction">
+      <div class="corr-etape">
+        <span class="c-num">1</span>
+        <table class="tableau-corr">
+          <thead><tr><th>Caractéristiques</th><th>Avantages</th></tr></thead>
+          <tbody>
+            <tr><td colspan="2"><strong>Identification</strong> – aspirateur robot Robonet R5</td></tr>
+            <tr><td colspan="2"><strong>Techniques</strong></td></tr>
+            <tr><td>Autonomie 150 min</td><td>Nettoie tout le logement en un seul passage ; la plus longue des trois modèles.</td></tr>
+            <tr><td>Cartographie laser</td><td>Ne laisse aucune zone oubliée et évite les obstacles (contrairement à l'Aspiro Max).</td></tr>
+            <tr><td>Fonction lavage</td><td>Aspire et lave en un seul passage (absente sur le Cleanbot 300).</td></tr>
+            <tr><td>58 dB</td><td>Le plus silencieux des trois modèles.</td></tr>
+            <tr><td colspan="2"><strong>Commerciales</strong></td></tr>
+            <tr><td>Prix 349 €</td><td>Moins cher que le Cleanbot, 20 € de plus que l'Aspiro Max pour plus de fonctions.</td></tr>
+            <tr><td>Garantie 3 ans</td><td>Un an de plus que les concurrents.</td></tr>
+            <tr><td>Livraison gratuite 48 h</td><td>Reçu rapidement et sans frais.</td></tr>
+            <tr><td colspan="2"><strong>Psychologiques</strong> – mobiles : confort, sécurité, argent – frein : le prix</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="corr-etape">
+        <span class="c-num">2</span>
+        <p class="res">Mobile principal : <strong>confort</strong> (absente la journée, poils de chats, bruit le soir) – frein : <strong>le prix</strong>.</p>
+      </div>
+      <div class="corr-etape">
+        <span class="c-num">3</span>
+        <table class="tableau-corr">
+          <thead><tr><th>Caractéristique</th><th>Avantage pour Mme Durand</th><th>Preuve</th></tr></thead>
+          <tbody>
+            <tr><td>Autonomie 150 min + cartographie</td><td>Ses 90 m² nettoyés pendant qu'elle travaille, sans zone oubliée.</td><td>Démonstration de l'application et de la carte.</td></tr>
+            <tr><td>58 dB</td><td>Peut fonctionner le soir sans la déranger.</td><td>Faire fonctionner le robot en magasin.</td></tr>
+            <tr><td>Garantie 3 ans</td><td>Tranquillité en cas de panne.</td><td>Montrer les CGV.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="corr-etape">
+        <span class="c-num">4</span>
+        <p><em>« Je comprends, c'est un budget. Pour seulement 20 € de plus que l'Aspiro Max, vous avez la cartographie laser, qui évite les oublis, et une garantie d'un an supplémentaire. Et il reste moins cher que le Cleanbot, qui n'a pas la fonction lavage. Sur trois ans de garantie, cela représente moins de 10 € par mois pour ne plus vous occuper du ménage des sols. »</em></p>
+        <code>349 ÷ 36 mois ≈ 9,69 € / mois</code>
+        <p class="conclu">La réponse au frein s'appuie sur la veille concurrentielle : le vendeur justifie le prix par la valeur apportée, sans dénigrer les concurrents.</p>
+      </div>
+    </div>
+  </div>
+</details>
+
+<!-- EX 13 -->
+<details class="exo-card">
+  <summary class="exo-header">
+    <span class="exo-num">Ex. 13</span>
+    <span class="badge badge-exam">🏁 sujet complet</span>
+    <span class="exo-titre-txt">Fiche service et argumentaire d'une extension de garantie</span>
+    <span class="chevron">▼</span>
+  </summary>
+  <div class="exo-body">
+    <div class="contexte">
+      L'enseigne d'électroménager <em>Maison Confort</em> fixe à ses vendeurs un objectif : proposer systématiquement l'extension de garantie <strong>Sérénité +</strong> (service associé) lors de la vente d'un gros appareil. Voici le descriptif interne :<br><br>
+      • durée : <strong>3 ans</strong> supplémentaires après la garantie constructeur de 2 ans ;<br>
+      • pièces, main-d'œuvre et déplacement inclus ;<br>
+      • intervention d'un technicien sous <strong>72 h</strong> ;<br>
+      • remplacement de l'appareil s'il est irréparable ;<br>
+      • prix : <strong>79 €</strong> pour un appareil de 300 à 600 € ;<br>
+      • paiement en caisse, au comptant ou en 3 fois sans frais.<br><br>
+      Un client vient d'acheter un lave-linge à 529 €. Il hésite : « J'ai déjà deux ans de garantie, ça suffit, non ? »
+    </div>
+    <div class="questions">
+      <div class="question"><span class="q-num">1</span><p>Réalisez la fiche service de l'extension Sérénité +.</p></div>
+      <div class="question"><span class="q-num">2</span><p>Transformez-la en argumentaire en ajoutant une preuve à chaque argument.</p></div>
+      <div class="question"><span class="q-num">3</span><p>Calculez ce que représente le coût de l'extension par année de couverture supplémentaire et en part du prix du lave-linge (arrondi à 0,1 %).</p></div>
+      <div class="question"><span class="q-num">4</span><p>Rédigez la réponse à l'objection du client.</p></div>
+    </div>
+    <div class="ordre-grandeur"><strong>Indice :</strong> 79 € sur 3 ans fait un peu plus de 25 € par an ; rapporté à 529 €, on est autour de 15 %.</div>
+    <button class="btn-corrige" onclick="toggleCorr(this)">✅ Voir la correction complète</button>
+    <div class="correction">
+      <div class="corr-etape">
+        <span class="c-num">1</span>
+        <span class="c-num">2</span>
+        <table class="tableau-corr">
+          <thead><tr><th>Caractéristiques</th><th>Avantages</th><th>Preuves</th></tr></thead>
+          <tbody>
+            <tr><td colspan="3"><strong>Techniques</strong></td></tr>
+            <tr><td>3 ans supplémentaires</td><td>Appareil couvert pendant 5 ans au total.</td><td>Contrat Sérénité +.</td></tr>
+            <tr><td>Pièces, main-d'œuvre, déplacement inclus</td><td>Aucune dépense imprévue en cas de panne.</td><td>Conditions générales du contrat.</td></tr>
+            <tr><td>Intervention sous 72 h</td><td>Pas plusieurs semaines sans lave-linge.</td><td>Témoignages ou avis clients.</td></tr>
+            <tr><td>Remplacement si irréparable</td><td>Un appareil neuf si la panne est grave.</td><td>Contrat Sérénité +.</td></tr>
+            <tr><td colspan="3"><strong>Commerciales</strong></td></tr>
+            <tr><td>Prix 79 €</td><td>Moins cher qu'une seule réparation hors garantie.</td><td>Grille tarifaire du SAV.</td></tr>
+            <tr><td>Paiement en 3 fois sans frais</td><td>Dépense étalée, sans surcoût.</td><td>CGV.</td></tr>
+            <tr><td colspan="3"><strong>Psychologiques</strong> – mobiles : sécurité, confort, environnement (réparer plutôt que jeter) – frein : le prix, la garantie constructeur jugée suffisante</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="corr-etape">
+        <span class="c-num">3</span>
+        <code>79 ÷ 3 ≈ 26,33 € par année supplémentaire</code>
+        <code>79 ÷ 529 × 100 ≈ 14,9 % du prix du lave-linge</code>
+        <code>Paiement en 3 fois : 79 ÷ 3 ≈ 26,33 € par échéance</code>
+      </div>
+      <div class="corr-etape">
+        <span class="c-num">4</span>
+        <p><em>« Les deux ans de garantie constructeur vous couvrent bien au début. Mais les pannes de lave-linge arrivent surtout après quelques années d'utilisation. Avec Sérénité +, vous êtes couvert cinq ans au total, pièces, main-d'œuvre et déplacement compris, pour environ 26 € par an. Une seule intervention hors garantie coûte souvent plus cher. Je vous montre ce qui est inclus dans le contrat ? »</em></p>
+        <p class="conclu">Le référentiel attend que les services associés soient proposés de façon systématique et adaptée au besoin du client : la fiche service est l'outil qui le prépare.</p>
+      </div>
+    </div>
+  </div>
+</details>
+
+<!-- EX 14 -->
+<details class="exo-card">
+  <summary class="exo-header">
+    <span class="exo-num">Ex. 14</span>
+    <span class="badge badge-exam">🏁 sujet complet</span>
+    <span class="exo-titre-txt">Préparer une réunion de vente à domicile</span>
+    <span class="chevron">▼</span>
+  </summary>
+  <div class="exo-body">
+    <div class="contexte">
+      Vous êtes vendeur(se) à domicile pour la marque <em>Blendix</em>. Vous préparez une réunion chez une hôtesse où vous présenterez le blender chauffant <strong>Blendix Pro</strong>.
+    </div>
+    <table class="tableau-donnees">
+      <thead><tr><th>Élément</th><th>Information</th></tr></thead>
+      <tbody>
+        <tr><td>Puissance</td><td class="num">1 400 W</td></tr>
+        <tr><td>Bol</td><td class="num">verre, 1,75 L</td></tr>
+        <tr><td>Fonction chauffante</td><td class="num">jusqu'à 100 °C, soupe prête en 20 min</td></tr>
+        <tr><td>Programmes</td><td class="num">8 programmes automatiques</td></tr>
+        <tr><td>Nettoyage</td><td class="num">programme de nettoyage automatique</td></tr>
+        <tr><td>Prix</td><td class="num">189 €</td></tr>
+        <tr><td>Fabrication</td><td class="num">assemblé en France, pièces détachées disponibles 10 ans</td></tr>
+        <tr><td>Garantie</td><td class="num">5 ans sur le moteur</td></tr>
+        <tr><td>Paiement</td><td class="num">4 fois sans frais</td></tr>
+        <tr><td>Livraison</td><td class="num">à domicile, offerte</td></tr>
+      </tbody>
+    </table>
+    <div class="contexte">
+      Parmi les invitées : <strong>Sophie</strong>, mère de quatre enfants, qui « manque de temps pour cuisiner sainement », <strong>Inès</strong>, sportive, qui prépare des smoothies et « adore tester les appareils dernier cri », et <strong>Camille</strong>, qui achète ses légumes bio chez un producteur local et « refuse les appareils jetables ».
+    </div>
+    <div class="questions">
+      <div class="question"><span class="q-num">1</span><p>Réalisez l'argumentaire de vente du Blendix Pro en choisissant des preuves adaptées à une réunion à domicile.</p></div>
+      <div class="question"><span class="q-num">2</span><p>Identifiez le mobile principal de Sophie, d'Inès et de Camille et indiquez, pour chacune, les deux arguments à mettre en avant.</p></div>
+      <div class="question"><span class="q-num">3</span><p>Calculez le montant de chaque échéance en cas de paiement en 4 fois et utilisez-le pour répondre au frein du prix.</p></div>
+    </div>
+    <div class="ordre-grandeur"><strong>Indice :</strong> en réunion, la meilleure preuve est celle que les participantes voient, sentent et goûtent. 189 ÷ 4 est un peu inférieur à 50 €.</div>
+    <button class="btn-corrige" onclick="toggleCorr(this)">✅ Voir la correction complète</button>
+    <div class="correction">
+      <div class="corr-etape">
+        <span class="c-num">1</span>
+        <table class="tableau-corr">
+          <thead><tr><th>Caractéristiques</th><th>Avantages</th><th>Preuves</th></tr></thead>
+          <tbody>
+            <tr><td colspan="3"><strong>Techniques</strong></td></tr>
+            <tr><td>Puissance 1 400 W</td><td>Mixe glace et fruits congelés en quelques secondes.</td><td>Préparer un smoothie devant les invitées.</td></tr>
+            <tr><td>Bol en verre 1,75 L</td><td>Prépare pour toute la famille, ne garde pas les odeurs.</td><td>Faire manipuler le bol.</td></tr>
+            <tr><td>Fonction chauffante</td><td>Soupe maison prête en 20 min sans casserole.</td><td>Démonstration et dégustation.</td></tr>
+            <tr><td>8 programmes</td><td>Il suffit d'appuyer sur un bouton, sans surveillance.</td><td>Lancer un programme en direct.</td></tr>
+            <tr><td>Nettoyage automatique</td><td>Pas de corvée de vaisselle.</td><td>Lancer le nettoyage après la démonstration.</td></tr>
+            <tr><td>Assemblé en France, pièces disponibles 10 ans</td><td>Un appareil fabriqué près de chez vous, qu'on répare au lieu de le jeter.</td><td>Mention sur l'emballage, catalogue de la marque.</td></tr>
+            <tr><td colspan="3"><strong>Commerciales</strong></td></tr>
+            <tr><td>Prix 189 €</td><td>Remplace plusieurs appareils (blender, cuiseur à soupe).</td><td>Catalogue de la marque.</td></tr>
+            <tr><td>Garantie moteur 5 ans</td><td>Un appareil fait pour durer.</td><td>Certificat de garantie.</td></tr>
+            <tr><td>4 fois sans frais</td><td>Dépense répartie sans surcoût.</td><td>Bon de commande.</td></tr>
+            <tr><td>Livraison offerte</td><td>Reçu chez soi sans frais.</td><td>Bon de commande.</td></tr>
+            <tr><td colspan="3"><strong>Psychologiques</strong> – mobiles : confort, nouveauté, sécurité, environnement – frein : le prix</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="corr-etape">
+        <span class="c-num">2</span>
+        <table class="tableau-corr">
+          <thead><tr><th>Invitée</th><th>Mobile</th><th>Arguments prioritaires</th></tr></thead>
+          <tbody>
+            <tr><td>Sophie</td><td class="val">Confort</td><td>Fonction chauffante (soupe en 20 min) ; nettoyage automatique.</td></tr>
+            <tr><td>Inès</td><td class="val">Nouveauté</td><td>Puissance 1 400 W (smoothies) ; 8 programmes automatiques.</td></tr>
+            <tr><td>Camille</td><td class="val">Environnement</td><td>Assemblé en France, pièces disponibles 10 ans ; garantie moteur 5 ans (appareil durable).</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="corr-etape">
+        <span class="c-num">3</span>
+        <code>189 ÷ 4 = 47,25 € par échéance</code>
+        <p class="res">Échéance : <strong>47,25 €</strong></p>
+        <p><em>« Vous pouvez régler en 4 fois sans frais, soit 47,25 € par mois. Et vous avez un seul appareil pour les soupes, les smoothies et les compotes, garanti 5 ans sur le moteur. »</em></p>
+        <p class="conclu">En vente à domicile, les preuves par la démonstration et la dégustation sont les plus convaincantes : l'argumentaire se prépare en fonction du lieu de vente.</p>
+      </div>
+    </div>
+  </div>
+</details>
+
+</main>
+
+<footer class="site-footer">
+  Bac Pro MCV – Bloc 1 « conseiller et vendre » – préparation E31 &nbsp;|&nbsp; 14 exercices progressifs – préparer ses outils de vente
+</footer>
+
+<script>
+function toggleCorr(btn) {
+  const corr = btn.nextElementSibling;
+  const isVisible = corr.classList.contains('visible');
+  corr.classList.toggle('visible', !isVisible);
+  btn.textContent = isVisible ? '✅ Voir la correction' : '🔒 Masquer la correction';
+}
+</script>
+
+</body>
+</html>
